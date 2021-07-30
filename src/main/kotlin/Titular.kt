@@ -1,6 +1,3 @@
-class Titular(private val name: String) {
+class Titular(val name: String) {
 
-    fun getName(): String{
-        return this.name
-    }
 }

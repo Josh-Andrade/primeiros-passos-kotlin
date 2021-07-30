@@ -1,6 +1,7 @@
 fun main() {
     println("First steps with kotlin")
-    val account = Account("1057-1", 100.0, 200.0, "Joshua Andrade")
+    val account = Account("1057-1", 100.0, 200.0,
+        Titular("Joshua Andrade"))
 
     account.showAccountData()
     account.deposit(2000.0)
@@ -13,4 +14,5 @@ fun main() {
     account.depositOnFor()
     account.withdrawOnFor()
     account.accountBalance()
+
 }

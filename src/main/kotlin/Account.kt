@@ -1,6 +1,6 @@
-class Account(private val accountNumber: String, private var balance: Double, private val specialCheck: Double, nomeTitular: String) {
-
-    private val titular = Titular(nomeTitular)
+class Account(
+    private val accountNumber: String, private var balance: Double,
+    private val specialCheck: Double, private val titular: Titular) {
 
     fun deposit(depositValue: Double) {
         when {
@@ -86,7 +86,7 @@ class Account(private val accountNumber: String, private var balance: Double, pr
     }
 
     fun showAccountData(){
-        println("Titular: ${this.titular.getName()}")
+        println("Titular: ${this.titular.name}")
         println("account Number: ${this.accountNumber}")
         println("Balance: ${this.balance}")
     }
