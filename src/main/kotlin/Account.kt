@@ -1,7 +1,9 @@
 class Account(
-    private val accountNumber: String, private var balance: Double,
-    private val specialCheckLimit: Double, private val titular: Titular
+    private val accountNumber: String,
+    private val specialCheckLimit: Double,
+    private val titular: Titular
 ) {
+    private var balance = 0.0
 
     fun deposit(depositValue: Double) {
         when {
@@ -26,7 +28,6 @@ class Account(
         }
     }
 
-
     fun verifyAccountBalanceStatus() {
         when {
             this.balance > 0.0 -> println("Positive balance")
@@ -36,10 +37,10 @@ class Account(
     }
 
     fun depositOrWithdrawOnConditions() {
-        when{
+        when {
             this.balance <= 100 -> this.deposit(1.0)
             this.balance > 100 && this.balance < 2000 -> this.deposit(2300.0)
-            else ->this.withdraw(2200.0)
+            else -> this.withdraw(2200.0)
         }
         println("Account balance after conditions: ${this.balance}")
     }
@@ -48,7 +49,7 @@ class Account(
         while (this.balance > 2000) {
             this.withdraw(100.0)
             println("Balance after withdraw ${this.balance}")
-            Thread.sleep(5000)
+            Thread.sleep(1000)
         }
     }
 

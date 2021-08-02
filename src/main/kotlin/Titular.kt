@@ -1,3 +1,2 @@
-class Titular(val name: String) {
-
+class Titular(var name: String) {
 }

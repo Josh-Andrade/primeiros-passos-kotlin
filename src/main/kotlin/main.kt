@@ -1,19 +1,23 @@
+import kotlin.random.Random
+
 fun main() {
     println("First steps with kotlin, Bank account simulator")
     val account = Account(
-        "1057-1", 100.0, 200.0,
-        Titular("Joshua Andrade")
+        Random.nextInt(0, Int.MAX_VALUE).toString(),
+        specialCheckLimit = 100.0,
+        titular = Titular("Joshua Andrade")
     )
 
     val account2 = Account(
-        "1057-2", 0.0, 200.0,
-        Titular("Esther Leão")
+        Random.nextInt().toString(),
+        specialCheckLimit =0.0,
+        titular = Titular("Esther Leão")
     )
 
     account.showAccountData()
-    account.deposit(20000.0)
+    account.deposit(depositValue = 5000.0)
     account.accountBalanceAfterWithdraw()
-    account.withdraw(100.0)
+    account.withdraw(withdrawValue = 100.0)
     account.accountBalanceBeforeDeposit()
     account.withdrawOnWhile()
     account.depositOrWithdrawOnConditions()
@@ -21,7 +25,7 @@ fun main() {
     account.depositOnFor()
     account.withdrawOnFor()
     account.accountBalance()
-    account.transferTo(account2, 2650.0)
+    account.transferTo(account2, transferValue = 2650.0)
 
     account2.showAccountData()
     account.showAccountData()
