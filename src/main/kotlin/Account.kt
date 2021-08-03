@@ -1,9 +1,9 @@
-class Account(
+abstract class Account(
     private val accountNumber: String,
     private val specialCheckLimit: Double,
-    private val titular: Titular
+    private val owner: Owner
 ) {
-    private var balance = 0.0
+    protected var balance = 0.0
 
     fun deposit(depositValue: Double) {
         when {
@@ -12,14 +12,9 @@ class Account(
         }
     }
 
-    fun withdraw(withdrawValue: Double) {
-        when {
-            this.balance >= withdrawValue -> this.balance -= withdrawValue
-            else -> withdrawWithSpecialCheckLimit(withdrawValue)
-        }
-    }
+    abstract fun withdraw(withdrawValue: Double)
 
-    private fun withdrawWithSpecialCheckLimit(withdrawValue: Double) {
+    fun withdrawWithSpecialCheckLimit(withdrawValue: Double) {
         var newBalance = this.balance
         newBalance -= withdrawValue
         when {
@@ -68,7 +63,7 @@ class Account(
     }
 
     fun accountBalance() {
-        println("${this.titular.name} Account balance: ${this.balance}")
+        println("${this.owner.name} Account balance: ${this.balance}")
     }
 
     fun accountBalanceBeforeDeposit() {
@@ -84,7 +79,7 @@ class Account(
     }
 
     fun showAccountData() {
-        println("Titular: ${this.titular.name}")
+        println("Owner: ${this.owner.name}")
         println("account Number: ${this.accountNumber}")
         println("Balance: ${this.balance}")
     }
